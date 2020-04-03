@@ -7,25 +7,42 @@ alert('Угадай число от 1 до 100');
 
 
 function gameFunc() {
-  const answer = parseInt(Math.random() * 100);
+  let answer = parseInt(Math.random() * 100);
+  let counter = 9;
   console.log(answer);
+  alert('asd' + answer);
   return function checkQuestion() {
-    console.log(answer);
-    let question = prompt('Введи число!');
-    console.log(isNumber(question));
-    if (question === null) {
-      alert('Игра закончена');
-    } else if (!isNumber(question)) {
-      checkQuestion();
-    } else if (+question > answer) {
-      alert('Загаданное число меньше');
-      checkQuestion();
-    } else if (+question < answer) {
-      alert('Загаданное число больше');
-      checkQuestion();
+    if (counter > 0) {
+      let question = prompt('Введи число!');
+      if (question === null) {
+        alert('Игра закончена');
+      } else if (!isNumber(question)) {
+        checkQuestion();
+      } else if (+question > answer) {
+        alert('Загаданное число меньше, осталось попыток ' + counter);
+        counter--;
+        console.log(counter);
+        checkQuestion();
+      } else if (+question < answer) {
+        alert('Загаданное число больше, осталось попыток ' + counter);
+        counter--;
+        console.log(counter);
+        checkQuestion();
+      } else {
+        alert('Поздравляю, Вы угадали!!!');
+      }
     } else {
-      alert('Поздравляю, Вы угадали!!!');
+      let lowCounter = confirm('Попытки закончились, хотите сыграть еще?');
+      if (lowCounter === true) {
+        gameFunc();
+      } else {
+        return;
+      }
     }
+
+    
+    
+    
   };
 };
 const game = gameFunc();
