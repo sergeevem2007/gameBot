@@ -10,7 +10,6 @@ function gameFunc() {
   let answer = parseInt(Math.random() * 100);
   let counter = 9;
   console.log(answer);
-  alert('asd' + answer);
   return function checkQuestion() {
     if (counter > 0) {
       let question = prompt('Введи число!');
@@ -38,11 +37,7 @@ function gameFunc() {
       } else {
         return;
       }
-    }
-
-    
-    
-    
+    }   
   };
 };
 const game = gameFunc();
