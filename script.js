@@ -29,11 +29,23 @@ function gameFunc() {
         checkQuestion();
       } else {
         alert('Поздравляю, Вы угадали!!!');
+        let gameAgain = confirm('Попытки закончились, хотите сыграть еще?');
+          if (gameAgain === true) {
+            answer = parseInt(Math.random() * 100);
+            console.log(answer);
+            counter = 9;
+            checkQuestion();
+          } else {
+            return;
+        }
       }
     } else {
       let lowCounter = confirm('Попытки закончились, хотите сыграть еще?');
       if (lowCounter === true) {
-        gameFunc();
+        answer = parseInt(Math.random() * 100);
+        console.log(answer);
+        counter = 9;
+        checkQuestion();
       } else {
         return;
       }
